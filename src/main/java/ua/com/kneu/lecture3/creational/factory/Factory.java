@@ -1,11 +1,7 @@
 package ua.com.kneu.lecture3.creational.factory;
-
 public class Factory {
-
     public Drive getDriver(String db){
-
         Drive drive = null;
-
         switch (db){
             case ("mysql"): drive = new JdbcDriverMysql();
                             break;
@@ -14,7 +10,6 @@ public class Factory {
             case ("db2"): drive = new JdbcDriverDb2();
                 break;
         }
-
         return drive;
     }
 

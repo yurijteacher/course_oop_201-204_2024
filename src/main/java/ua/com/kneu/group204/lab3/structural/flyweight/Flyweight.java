@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Flyweight {
-
-
-    private static final Map<String, Drive> maps = new HashMap<>();
+    private static final Map<String, Drive> maps =
+            new HashMap<>();
 
 
     public Drive getDriver(String db){
