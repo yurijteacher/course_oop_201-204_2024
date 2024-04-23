@@ -1,0 +1,1 @@
+ua.com.kneu.group202.lab4.car.SelectorCar:car:ua.com.kneu.group202.lab4.car.Jeep

@@ -15,7 +15,6 @@ public class MyTree {
         treeSet.add(2);
 
         treeSet.add(1);
-
         System.out.println(treeSet);
 
         TreeSet<Integer> treeSet1 = new TreeSet<>(Comparator.reverseOrder());
