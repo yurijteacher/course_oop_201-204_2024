@@ -14,9 +14,11 @@ public class CategoryRepository extends ConnectionToDb implements CategoryDao {
     Connection connection;
 
     /*
+
     Statement
     PreparedStatement
     CallableStatement
+
      */
 
 
@@ -119,7 +121,9 @@ public class CategoryRepository extends ConnectionToDb implements CategoryDao {
             statement = connection.createStatement();
 
             String sql ="INSERT INTO `category` (`name`, `description`, `link`) VALUES ('"
-                    +category.getName()+"', '"+category.getDescription()+"', '"+category.getLink()+"');";
+                    +category.getName()+"', '"
+                    +category.getDescription()+"', '"
+                    +category.getLink()+"');";
 
             statement.execute(sql);
 

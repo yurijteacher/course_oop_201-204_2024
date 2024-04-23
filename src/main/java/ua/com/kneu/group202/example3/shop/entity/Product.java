@@ -24,4 +24,15 @@ public class Product {
 
     private List<ProductsHasOrder> productsHasOrderLis;
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", link='" + link + '\'' +
+                ", category=" + category.getName() +
+                '}';
+    }
 }

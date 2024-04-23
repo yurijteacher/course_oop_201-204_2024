@@ -17,7 +17,7 @@ public class ConnectionToDb {
 
         try {
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println("Connection To DB");
+           // System.out.println("Connection To DB");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
