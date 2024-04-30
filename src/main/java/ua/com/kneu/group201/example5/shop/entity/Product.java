@@ -1,6 +1,9 @@
-package ua.com.kneu.group204.example4.shop.entity;
+package ua.com.kneu.group201.example5.shop.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -8,7 +11,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of = {"name", "description","image","price","category"})
 
 public class Product {
 
@@ -16,12 +18,11 @@ public class Product {
     private String name;
     private String description;
     private double price;
-
     private String image;
 
     private Category category;
 
-    private List<ProductsHasOrder> productsHasOrderList;
+    private List<ProductHasOrder> productHasOrderList;
 
     public Product(Long id, String name, String description, double price, String image, Category category) {
         this.id = id;

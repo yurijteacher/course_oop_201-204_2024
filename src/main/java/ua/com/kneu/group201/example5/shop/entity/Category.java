@@ -1,4 +1,4 @@
-package ua.com.kneu.group204.example4.shop.entity;
+package ua.com.kneu.group201.example5.shop.entity;
 
 import lombok.*;
 
@@ -8,7 +8,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@ToString
 
 public class Category {
 
@@ -17,20 +17,25 @@ public class Category {
     private String description;
     private String link;
 
-    private List<Product> products;
+    private List<Product> productList;
 
-
+    public Category(Long id, String name, String description, String link) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.link = link;
+    }
+}
 
 
 //    public Category() {
 //    }
 //
-//    public Category(Long id, String name, String description, String link, List<Product> products) {
+//    public Category(Long id, String name, String description, String link) {
 //        this.id = id;
 //        this.name = name;
 //        this.description = description;
 //        this.link = link;
-//        this.products = products;
 //    }
 //
 //    public Long getId() {
@@ -64,30 +69,4 @@ public class Category {
 //    public void setLink(String link) {
 //        this.link = link;
 //    }
-//
-//    public List<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(List<Product> products) {
-//        this.products = products;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Category{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", description='" + description + '\'' +
-//                ", link='" + link + '\'' +
-//                ", products=" + products +
-//                '}';
-//    }
-
-    public Category(Long id, String name, String description, String link) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.link = link;
-    }
-}
+//}

@@ -1,22 +1,21 @@
-package ua.com.kneu.group204.example4.shop.repository;
+package ua.com.kneu.group201.example5.shop.repository;
 
-import ua.com.kneu.group204.example4.shop.config.ConnectionToDb;
-import ua.com.kneu.group204.example4.shop.dao.ProductDao;
-import ua.com.kneu.group204.example4.shop.entity.Category;
-import ua.com.kneu.group204.example4.shop.entity.Product;
+import ua.com.kneu.group201.example5.shop.config.ConnectionToDb;
+import ua.com.kneu.group201.example5.shop.dao.ProductDao;
+import ua.com.kneu.group201.example5.shop.entity.Category;
+import ua.com.kneu.group201.example5.shop.entity.Product;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository extends ConnectionToDb implements ProductDao {
 
-
-    // Statement
-    // PreparedStatement
-    // CallableStatement
-
     Connection connection;
+
     public ProductRepository() {
         this.connection = getConnection();
     }
@@ -32,20 +31,18 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
         ResultSet rs = null;
 
         try {
-
-            ps = connection.prepareStatement(sql);
-            rs = ps.executeQuery();
+             ps = connection.prepareStatement(sql);
+             rs = ps.executeQuery();
 
             while (rs.next()){
                 Long id = rs.getLong("id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
                 Double price = rs.getDouble("price");
-                String image = rs.getString("link");
-
+                String image = rs.getString("image");
                 Category category = new CategoryRepository().findById(rs.getLong("category_id"));
 
-                products.add(new Product(id,name,description, price,image, category));
+                products.add(new Product(id,name,description,price,image,category));
             }
 
             rs.close();
@@ -59,7 +56,6 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-
             try {
                 ps.close();
             } catch (SQLException e) {
@@ -76,14 +72,12 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
 
         Product product = new Product();
 
-        String sql = "SELECT * FROM `product` where `id`=?";
-
+        String sql = "SELECT * FROM `product` WHERE `id`=?";
         PreparedStatement ps = null;
 
         ResultSet rs = null;
 
         try {
-
             ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             rs = ps.executeQuery();
@@ -93,11 +87,10 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
                 String name = rs.getString("name");
                 String description = rs.getString("description");
                 Double price = rs.getDouble("price");
-                String image = rs.getString("link");
-
+                String image = rs.getString("image");
                 Category category = new CategoryRepository().findById(rs.getLong("category_id"));
 
-                product = new Product(_id,name,description, price, image, category);
+                product =new Product(_id,name,description,price,image,category);
             }
 
             rs.close();
@@ -111,7 +104,6 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-
             try {
                 ps.close();
             } catch (SQLException e) {
@@ -123,20 +115,25 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
     }
 
     @Override
+    public Product findByName(String name) {
+        return null;
+    }
+
+    @Override
     public void save(Product product) {
 
-        String sql = "INSERT INTO `product` (`name`, `description`, `price`, `link`, `category_id`) " +
+        String sql = "INSERT INTO `product` (`name`, `description`, `price`, `image`, `category_id`) " +
                 "VALUES (?, ?, ?, ?, ?);";
 
         PreparedStatement ps = null;
         try {
-            ps = connection.prepareStatement(sql);
+             ps = connection.prepareStatement(sql);
 
             ps.setString(1, product.getName());
             ps.setString(2, product.getDescription());
             ps.setDouble(3, product.getPrice());
             ps.setString(4, product.getImage());
-            ps.setLong(5, product.getCategory().getId());
+            ps.setLong(5,product.getCategory().getId());
 
             ps.execute();
 
@@ -154,12 +151,12 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
             }
         }
 
-
     }
 
     @Override
     public void update(Product product) {
-        String sql = "UPDATE `product` SET `name` = ?, `description` = ?, `price` = ?, `link` = ?, `category_id` = ? WHERE `id` = ?;";
+
+        String sql = "UPDATE `product` SET `name` = ?, `description` = ?, `price` = ?, `image` = ?, `category_id` = ? WHERE `id` = ?;";
 
         PreparedStatement ps = null;
         try {
@@ -169,7 +166,7 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
             ps.setString(2, product.getDescription());
             ps.setDouble(3, product.getPrice());
             ps.setString(4, product.getImage());
-            ps.setLong(5, product.getCategory().getId());
+            ps.setLong(5,product.getCategory().getId());
             ps.setLong(6, product.getId());
 
             ps.executeUpdate();
@@ -190,14 +187,14 @@ public class ProductRepository extends ConnectionToDb implements ProductDao {
     }
 
     @Override
-    public void deleteById(Product product) {
+    public void deleteByObj(Product product) {
         String sql = "DELETE FROM `product` WHERE `id` = ?;";
 
         PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement(sql);
-
             ps.setLong(1, product.getId());
+
             ps.executeUpdate();
 
             ps.close();

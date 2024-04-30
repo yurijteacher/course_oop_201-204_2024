@@ -20,5 +20,14 @@ public class Clients {
     private String email;
     private String phone;
 
+
+    public Clients(Long id, String firstName, String lastName, String email, String phone) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+    }
+
     private List<Orders> ordersList;
 }

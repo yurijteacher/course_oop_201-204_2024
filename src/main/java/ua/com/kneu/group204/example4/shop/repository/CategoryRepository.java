@@ -98,7 +98,6 @@ public class CategoryRepository extends ConnectionToDb implements CategoryDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -107,7 +106,6 @@ public class CategoryRepository extends ConnectionToDb implements CategoryDao {
         Statement statement  = null;
 
         try {
-
             String sql = "UPDATE `category` SET `name` = '"+obj.getName()+"', `description` = '"+obj.getDescription()+"', `link` = '"+obj.getLink()+"' WHERE `id` = '"+obj.getId()+"'";
 
             statement = connection.createStatement();

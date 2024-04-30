@@ -1,0 +1,35 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="example">
+
+        <class>ua.com.kneu.group204.lab5.entity.Category</class>
+        <class>ua.com.kneu.group204.lab5.entity.Product</class>
+        <class>ua.com.kneu.group204.lab5.entity.Order</class>
+        <class>ua.com.kneu.group204.lab5.entity.Client</class>
+        <class>ua.com.kneu.group204.lab5.entity.ProductHasOrder</class>
+        <class>ua.com.kneu.group204.lab5.entity.Roles</class>
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/course_jpa_hibernate_2024_204"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="root1234"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+
+            <property name="hibernate.agroal.maxSize" value="20"/>
+
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.highlight_sql" value="true"/>
+            <property name="hibernate.connection.CharSet" value="utf8"/>
+            <property name="hibernate.connection.characterEncoding" value="utf8"/>
+            <property name="hibernate.connection.useUnicode" value="true"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>
