@@ -1,10 +1,7 @@
 package ua.com.kneu.group204.lab5.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,20 +9,22 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(of={"id","name","description"})
 
 @Entity
 @Table(name = "category")
 public class Category {
 
     @Id // PK
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // NN AI
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // NN AI (i=i+1)
     private Long id;
+
+    @Column(name = "name")
     private String name;
     private String description;
     private String image;
 
     @OneToMany(mappedBy = "categories") // Obj == class.Pr.Obj
-    List<Product> productList;
-
+    private List<Product> productList;
 
 }

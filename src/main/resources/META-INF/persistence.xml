@@ -32,4 +32,5 @@
         </properties>
 
     </persistence-unit>
+
 </persistence>

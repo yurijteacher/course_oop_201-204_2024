@@ -21,13 +21,14 @@ public class Order {
     @Id // PK
     @GeneratedValue(strategy = GenerationType.IDENTITY) // NN AI
     private Long id;
+    // @Column(name = "date_created")
     private Date dateCreated;
     private boolean status;
     private String delivery;
     private String payment;
 
     @ManyToOne
-    @JoinColumn(name = "cliet_id")
+    @JoinColumn(name = "client_id")
     private Client clientes;
 
     @OneToMany(mappedBy = "_order")

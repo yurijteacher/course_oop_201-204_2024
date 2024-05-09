@@ -16,12 +16,13 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "clients")
+@Table(name = "_clients")
 public class Client {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //  PK
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // AI NN
     private Long id;
+
     private String firstName;
     private String lastName;
     private String email;

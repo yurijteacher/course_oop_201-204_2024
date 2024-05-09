@@ -11,11 +11,9 @@ public class Factory {
 
     public static Factory INSTANCE = new Factory();
 
-
     public static Factory getINSTANCE() {
         return INSTANCE;
     }
-
 
     private final EntityManagerFactory session;
 
